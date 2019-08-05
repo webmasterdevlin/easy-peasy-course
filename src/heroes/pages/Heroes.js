@@ -32,12 +32,9 @@ export default function Heroes() {
   const onSubmit = async event => {
     event.preventDefault();
     try {
-      postHero(hero);
+      await postHero(hero);
       setIsShowNewItemForm(!isShowNewItemForm);
-    } catch (e) {
-      alert(e.message);
-      throw e;
-    }
+    } catch {}
   };
 
   const removeItem = async (id, name) => {

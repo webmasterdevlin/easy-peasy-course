@@ -34,10 +34,7 @@ export default function Villains() {
     try {
       postVillain(villain);
       setIsShowNewItemForm(!isShowNewItemForm);
-    } catch (e) {
-      alert(e.message);
-      throw e;
-    }
+    } catch  {}
   };
 
   const removeItem = async (id, name) => {
