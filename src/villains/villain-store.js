@@ -1,4 +1,4 @@
-import { action, createContextStore, thunk } from 'easy-peasy'
+import { action, computed, createContextStore, thunk } from 'easy-peasy'
 import { deleteVillain, getVillainById, getVillains, postVillain, putVillain } from './villain-service'
 
 const VillainStore = createContextStore({
@@ -90,7 +90,9 @@ const VillainStore = createContextStore({
   updateVillains: action((state, updatedVillain) => {
     const index = state.villains.findIndex(v => v.id === updatedVillain.id);
     state.villains[index] = updatedVillain;
-  })
+  }),
+  /*computed values i.e. derived state*/
+  totalVillains: computed(state => Object.values(state.villains).length)
 });
 
 export default VillainStore;

@@ -1,20 +1,6 @@
 {
   "heroes": [
     {
-      "id": "BB795856-AA2E-95A7-32EF-3E71D3D87721",
-      "firstName": "Tatiana",
-      "lastName": "Curtis",
-      "house": "Viet Nam",
-      "knownAs": "Velit LLC"
-    },
-    {
-      "id": "36708E15-84F9-DAAA-AB5B-F404AFFD3FCC",
-      "firstName": "Dana",
-      "lastName": "Branch",
-      "house": "Cocos (Keeling) Islands",
-      "knownAs": "Porttitor Eros Industries Ltd."
-    },
-    {
       "id": "E87B579D-42D0-E13A-52D5-0BC7E816B76F",
       "firstName": "Dylan",
       "lastName": "Martinez",
@@ -538,13 +524,6 @@
       "lastName": "Giles",
       "house": "Afghanistan",
       "knownAs": "Dui Suspendisse PC"
-    },
-    {
-      "id": "-9vFwl-",
-      "firstName": "Tad",
-      "lastName": "",
-      "house": "",
-      "knownAs": ""
     }
   ],
   "villains": [
@@ -1079,48 +1058,6 @@
       "lastName": "Giles",
       "house": "Afghanistan",
       "knownAs": "Dui Suspendisse PC"
-    },
-    {
-      "id": "VpYGWHQ",
-      "firstName": "324",
-      "lastName": "3534",
-      "house": "",
-      "knownAs": ""
-    },
-    {
-      "id": "XxqtXV6",
-      "firstName": "1231232",
-      "lastName": "324234324324",
-      "house": "",
-      "knownAs": ""
-    },
-    {
-      "id": "Nf9HZmr",
-      "firstName": "0",
-      "lastName": "0",
-      "house": "",
-      "knownAs": ""
-    },
-    {
-      "id": "qecgmZq",
-      "firstName": "!@!",
-      "lastName": "0",
-      "house": "",
-      "knownAs": ""
-    },
-    {
-      "id": "oe4j7oS",
-      "firstName": "Tad",
-      "lastName": "",
-      "house": "",
-      "knownAs": ""
-    },
-    {
-      "id": "XgiQ4oY",
-      "firstName": "qwe",
-      "lastName": "ewqe",
-      "house": "",
-      "knownAs": ""
     }
   ]
 }

@@ -83,13 +83,6 @@ export default function Heroes() {
             </div>
             <section className="card-body">
               <div className="row">
-                <button
-                  onClick={() => removeItem(item.id, item.firstName)}
-                  className="btn btn-outline-danger card-link col text-center"
-                >
-                  <span className="fas fa-eraser  mr-2" />
-                  Delete
-                </button>
                 <Link
                   to={`/edit-hero/${item.id}`}
                   className="btn btn-primary card-link col text-center"
@@ -97,6 +90,13 @@ export default function Heroes() {
                   <span className="fas fa-edit  mr-2" />
                   Edit
                 </Link>
+                <button
+                  onClick={() => removeItem(item.id, item.firstName)}
+                  className="btn btn-outline-danger card-link col text-center"
+                >
+                  <span className="fas fa-eraser  mr-2" />
+                  Delete
+                </button>
               </div>
             </section>
           </div>

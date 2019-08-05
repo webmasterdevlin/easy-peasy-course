@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import HeroStore from '../../heroes/hero-store'
+import VillainStore from '../../villains/villain-store'
 
 export default function HeaderNav() {
+  const {totalHeroes} = HeroStore.useStoreState(
+    state => state
+  );
+  const {totalVillains} = VillainStore.useStoreState(state => state);
+
   const [navIsCollapse, setNavIsCollapse] = useState(true);
 
   const toggleNavBar = () => {
@@ -45,6 +52,12 @@ export default function HeaderNav() {
             </Link>
           </li>
         </ul>
+        <span className="mr-5" style={{ color: "purple", fontSize: "24px" }}>
+          Total heroes: {totalHeroes}
+        </span>
+        <span className="mr-5" style={{ color: "purple", fontSize: "24px" }}>
+          Total villains: {totalVillains}
+        </span>
         <ul className="navbar-nav my-2 my-lg-0">
           <li className="nav-item">
             <a

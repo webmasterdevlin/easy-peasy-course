@@ -1,4 +1,4 @@
-import { action, createContextStore, thunk } from 'easy-peasy'
+import { action, computed, createContextStore, thunk } from 'easy-peasy'
 import { deleteHero, getHeroById, getHeroes, postHero, putHero } from './hero-service'
 
 const HeroStore = createContextStore({
@@ -89,7 +89,9 @@ const HeroStore = createContextStore({
   updateHeroes: action((state, updatedHero) => {
     const index = state.heroes.findIndex(h => h.id === updatedHero.id);
     state.heroes[index] = updatedHero;
-  })
+  }),
+  /*computed values i.e. derived state*/
+  totalHeroes: computed(state => Object.values(state.heroes).length)
 });
 
 export default HeroStore;
