@@ -32,7 +32,7 @@ export default function Villains() {
   const onSubmit = async event => {
     event.preventDefault();
     try {
-      postVillain(villain);
+     await postVillain(villain);
       setIsShowNewItemForm(!isShowNewItemForm);
     } catch  {}
   };
@@ -41,7 +41,7 @@ export default function Villains() {
     const isConfirmed = window.confirm(`Delete ${name}?`);
     if (!isConfirmed) return;
 
-    deleteVillain(id);
+    await deleteVillain(id);
   };
   return (
     <>

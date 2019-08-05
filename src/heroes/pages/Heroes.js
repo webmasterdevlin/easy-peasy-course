@@ -41,7 +41,7 @@ export default function Heroes() {
     const isConfirmed = window.confirm(`Delete ${name}?`);
     if (!isConfirmed) return;
 
-    deleteHero(id);
+    await deleteHero(id);
   };
   return (
     <>
