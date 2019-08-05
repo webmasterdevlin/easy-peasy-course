@@ -103,7 +103,7 @@ export default function EditHero() {
             <button
               onClick={handleBackButton}
               type="button"
-              className="btn btn-default mt-3"
+              className="btn btn-outline-secondary mt-3 ml-3"
             >
               Back
             </button>

@@ -1,13 +1,6 @@
 {
   "heroes": [
     {
-      "id": "A3D523C0-F181-B49D-7F88-E8D72DD2EEC0",
-      "firstName": "Justin",
-      "lastName": "Lynch",
-      "house": "Georgia",
-      "knownAs": "Risus Quis Associates Ltd."
-    },
-    {
       "id": "BB795856-AA2E-95A7-32EF-3E71D3D87721",
       "firstName": "Tatiana",
       "lastName": "Curtis",
@@ -555,13 +548,6 @@
     }
   ],
   "villains": [
-    {
-      "id": "04161AB1-9778-F1E2-6739-B779D5063595",
-      "firstName": "Yael",
-      "lastName": "Steele",
-      "house": "Bahrainasdsad",
-      "knownAs": "Morbi Quisasd asd"
-    },
     {
       "id": "665C750E-E395-4C14-CC31-69A1C43BF08B",
       "firstName": "Dylan",

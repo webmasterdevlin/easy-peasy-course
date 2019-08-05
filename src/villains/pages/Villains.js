@@ -95,7 +95,7 @@ export default function Villains() {
                 </button>
                 <Link
                   to={`/edit-villain/${item.id}`}
-                  className="btn btn-outline-primary card-link col text-center"
+                  className="btn btn-primary card-link col text-center"
                 >
                   <span className="fas fa-edit  mr-2" />
                   Edit
