@@ -4,16 +4,19 @@ import { Link } from "react-router-dom";
 import HeroStore from "../hero-store";
 
 export default function Heroes() {
-  const [isShowNewItemForm, setIsShowNewItemForm] = useState(false); // component state
+  /*part of the Easy-Peasy pattern*/
   const { heroes, hero, isLoading, error } = HeroStore.useStoreState(
     state => state
-  ); // state of store
+  );
   const {
     getHeroes,
     postHero,
     deleteHero,
     setHero
   } = HeroStore.useStoreActions(actions => actions);
+
+  /*plain React.js*/
+  const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
 
   useEffect(() => {
     getHeroes();

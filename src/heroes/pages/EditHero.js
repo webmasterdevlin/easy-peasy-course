@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import useReactRouter from "use-react-router";
 import HeroStore from "../hero-store";
 
 export default function EditHero() {
+  /*can be manually created using useContext and Router Context*/
   const { match, history } = useReactRouter();
+
+  /*part of the Easy-Peasy pattern*/
   const { hero, isLoading, error } = HeroStore.useStoreState(state => state);
   const { getHeroById, setHero, putHero } = HeroStore.useStoreActions(
     actions => actions
   );
 
+  /*plain React.js*/
   useEffect(() => {
     getHeroById(match.params.id);
   }, []);

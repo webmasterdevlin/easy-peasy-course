@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import useReactRouter from "use-react-router";
 import VillainStore from "../villain-store";
 
 export default function EditVillain() {
+  /*can be manually created using useContext and Router Context*/
   const { match, history } = useReactRouter();
+
+  /*part of the Easy-Peasy pattern*/
   const { villain, isLoading, error } = VillainStore.useStoreState(
     state => state
   );
@@ -13,6 +16,7 @@ export default function EditVillain() {
     putVillain
   } = VillainStore.useStoreActions(actions => actions);
 
+  /*plain React.js*/
   useEffect(() => {
     getVillainById(match.params.id);
   }, []);

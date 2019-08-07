@@ -13,4 +13,4 @@ $ npm run start
 
 The React app and the fake web service will run concurrently.
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot-reactjs.png)

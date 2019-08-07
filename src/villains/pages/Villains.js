@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import VillainStore from "../villain-store";
 
 export default function Villains() {
-  const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
+  /*part of the Easy-Peasy pattern*/
   const { villains, villain, isLoading, error } = VillainStore.useStoreState(
     state => state
   );
@@ -14,6 +14,9 @@ export default function Villains() {
     deleteVillain,
     setVillain
   } = VillainStore.useStoreActions(actions => actions);
+
+  /*plain React.js*/
+  const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
 
   useEffect(() => {
     getVillains();
