@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import VillainStore from "../villain-store";
 
 export default function EditVillain(params) {
-
-
   /*part of the Easy-Peasy pattern*/
-  const { villain, isLoading, error } = VillainStore.useStoreState(
+  const { villain, isLoading } = VillainStore.useStoreState(
     state => state
   );
   const {

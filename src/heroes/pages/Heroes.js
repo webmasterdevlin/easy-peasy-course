@@ -5,7 +5,7 @@ import HeroStore from "../hero-store";
 
 export default function Heroes() {
   /*part of the Easy-Peasy pattern*/
-  const { heroes, hero, isLoading, error } = HeroStore.useStoreState(
+  const { heroes, hero, isLoading } = HeroStore.useStoreState(
     state => state
   );
   const {
@@ -23,8 +23,7 @@ export default function Heroes() {
   }, []);
 
   const showNewItemForm = () => {
-    // setIsShowNewItemForm(!isShowNewItemForm);
-    window.history.back();
+    setIsShowNewItemForm(!isShowNewItemForm);
   };
   const onChange = ({ currentTarget: input }) => {
     const newHero = { ...hero };

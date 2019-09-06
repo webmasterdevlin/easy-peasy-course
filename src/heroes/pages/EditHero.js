@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import HeroStore from "../hero-store";
 
 export default function EditHero(params) {
-
   /*part of the Easy-Peasy pattern*/
-  const { hero, isLoading, error } = HeroStore.useStoreState(state => state);
+  const { hero, isLoading } = HeroStore.useStoreState(state => state);
   const { getHeroById, setHero, putHero } = HeroStore.useStoreActions(
     actions => actions
   );

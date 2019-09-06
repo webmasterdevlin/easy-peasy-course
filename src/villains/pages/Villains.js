@@ -5,7 +5,7 @@ import VillainStore from "../villain-store";
 
 export default function Villains() {
   /*part of the Easy-Peasy pattern*/
-  const { villains, villain, isLoading, error } = VillainStore.useStoreState(
+  const { villains, villain, isLoading } = VillainStore.useStoreState(
     state => state
   );
   const {
