@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import Router from "./router";
+import RootRouter from "./root-router";
 import HeaderNav from "./shared/components/HeaderNav";
 import HeroStore from "./heroes/hero-store";
 import VillainStore from "./villains/villain-store";
@@ -14,7 +14,7 @@ function App() {
           <>
             <HeaderNav />
             <div className="container">
-              <Router />
+              <RootRouter />
             </div>
           </>
         </BrowserRouter>

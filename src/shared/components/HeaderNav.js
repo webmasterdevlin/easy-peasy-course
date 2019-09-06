@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
-import HeroStore from '../../heroes/hero-store'
-import VillainStore from '../../villains/villain-store'
+import HeroStore from '../../heroes/hero-store';
+import VillainStore from '../../villains/villain-store';
+import {Link,} from "@reach/router";
+
 
 export default function HeaderNav() {
   const {totalHeroes} = HeroStore.useStoreState(
@@ -42,9 +43,9 @@ export default function HeaderNav() {
       >
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+            <Link className="nav-link" to="/">
               Heroes
-            </NavLink>
+            </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/villains">
