@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
-import { Link } from "react-router-dom";
+import { Link } from "@reach/router";
 import HeroStore from "../hero-store";
 
 export default function Heroes() {
@@ -23,7 +23,8 @@ export default function Heroes() {
   }, []);
 
   const showNewItemForm = () => {
-    setIsShowNewItemForm(!isShowNewItemForm);
+    // setIsShowNewItemForm(!isShowNewItemForm);
+    window.history.back();
   };
   const onChange = ({ currentTarget: input }) => {
     const newHero = { ...hero };

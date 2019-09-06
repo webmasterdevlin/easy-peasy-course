@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import useReactRouter from "use-react-router";
 import VillainStore from "../villain-store";
 
-export default function EditVillain() {
-  /*can be manually created using useContext and RootRouter Context*/
-  const { match, history } = useReactRouter();
+export default function EditVillain(params) {
+
 
   /*part of the Easy-Peasy pattern*/
   const { villain, isLoading, error } = VillainStore.useStoreState(
@@ -18,7 +16,7 @@ export default function EditVillain() {
 
   /*plain React.js*/
   useEffect(() => {
-    getVillainById(match.params.id);
+    getVillainById(params.id);
   }, []);
 
   const handleInputChange = ({ currentTarget: input }) => {
@@ -34,7 +32,7 @@ export default function EditVillain() {
   };
 
   const handleBackButton = () => {
-    history.goBack();
+    window.history.back();
   };
 
   return (

@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
-import useReactRouter from "use-react-router";
 import HeroStore from "../hero-store";
 
-export default function EditHero() {
-  /*can be manually created using useContext and RootRouter Context*/
-  const { match, history } = useReactRouter();
+export default function EditHero(params) {
 
   /*part of the Easy-Peasy pattern*/
   const { hero, isLoading, error } = HeroStore.useStoreState(state => state);
@@ -14,7 +11,7 @@ export default function EditHero() {
 
   /*plain React.js*/
   useEffect(() => {
-    getHeroById(match.params.id);
+    getHeroById(params.id);
   }, []);
 
   const handleInputChange = ({ currentTarget: input }) => {
@@ -30,7 +27,7 @@ export default function EditHero() {
   };
 
   const handleBackButton = () => {
-    history.goBack();
+    window.history.back();
   };
 
   return (

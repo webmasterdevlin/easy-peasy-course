@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
-import { Link } from "react-router-dom";
+import { Link } from "@reach/router";
 import VillainStore from "../villain-store";
 
 export default function Villains() {
