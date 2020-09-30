@@ -1,8 +1,10 @@
-import { action, computed, createContextStore, thunk } from 'easy-peasy'
+import { action, computed, createContextStore, thunk, ThunkCreator } from 'easy-peasy'
 import { deleteHero, getHeroById, getHeroes, postHero, putHero } from './hero-service'
+import { HeroActionType, HeroStateType } from './hero-types';
 
-const HeroStore = createContextStore({
-  /*states*/
+
+
+const initialValues: HeroStateType = {
   heroes: [],
   hero: {
     id: "",
@@ -13,8 +15,13 @@ const HeroStore = createContextStore({
   },
   error: "",
   isLoading: false,
+}
+
+const HeroStore = createContextStore({
+  /*states*/
+ ...initialValues,
   /*actions thunk side effects*/
-  getHeroes: thunk(async actions => {
+  getHeroes: thunk(async (actions: HeroActionType) => {
     actions.setIsLoading();
     try {
       const { data } = await getHeroes();
@@ -24,7 +31,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  getHeroById: thunk(async (actions, id) => {
+  getHeroById: thunk(async (actions: HeroActionType, id) => {
     actions.setIsLoading();
     try {
       const { data } = await getHeroById(id);
@@ -34,7 +41,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  postHero: thunk(async (actions, newHero) => {
+  postHero: thunk(async (actions: HeroActionType, newHero) => {
     actions.setIsLoading();
     try {
       const { data } = await postHero(newHero);
@@ -45,7 +52,7 @@ const HeroStore = createContextStore({
     actions.setIsLoading();
   }),
   // Pessimistic UI update
-  deleteHero: thunk(async (actions, id) => {
+  deleteHero: thunk(async (actions: HeroActionType, id) => {
     actions.setIsLoading();
     try {
       await deleteHero(id);
@@ -55,7 +62,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  putHero: thunk(async (actions, updatedHero) => {
+  putHero: thunk(async (actions: HeroActionType, updatedHero) => {
     actions.setIsLoading();
 
     try {
@@ -67,31 +74,31 @@ const HeroStore = createContextStore({
     actions.setIsLoading();
   }),
   /*actions*/
-  setHeroes: action((state, heroes) => {
+  setHeroes: action((state:HeroStateType, heroes) => {
     state.heroes = heroes;
   }),
-  setHero: action((state, hero) => {
+  setHero: action((state:HeroStateType, hero) => {
     state.hero = hero;
   }),
-  setError: action((state, error) => {
+  setError: action((state:HeroStateType, error) => {
     state.error = error.message;
     alert(error.message);
   }),
-  setIsLoading: action(state => {
+  setIsLoading: action((state:HeroStateType) => {
     state.isLoading = !state.isLoading;
   }),
-  addHero: action((state, newHero) => {
+  addHero: action((state:HeroStateType, newHero) => {
     state.heroes.push(newHero);
   }),
-  removeHero: action((state, id) => {
+  removeHero: action((state:HeroStateType, id) => {
     state.heroes = state.heroes.filter(h => h.id !== id);
   }),
-  updateHeroes: action((state, updatedHero) => {
+  updateHeroes: action((state:HeroStateType, updatedHero) => {
     const index = state.heroes.findIndex(h => h.id === updatedHero.id);
     state.heroes[index] = updatedHero;
   }),
   /*computed values i.e. derived state*/
-  totalHeroes: computed(state => Object.values(state.heroes).length)
+  totalHeroes: computed((state:HeroStateType) => Object.values(state.heroes).length)
 });
 
 export default HeroStore;

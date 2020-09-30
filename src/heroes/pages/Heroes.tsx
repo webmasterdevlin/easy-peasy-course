@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
 import { Link } from "@reach/router";
 import HeroStore from "../hero-store";
+import {  HeroActionType, HeroStateType } from "heroes/hero-types";
 
 export default function Heroes() {
   /*part of the Easy-Peasy pattern*/
-  const { heroes, hero, isLoading } = HeroStore.useStoreState(
+  const { heroes, hero, isLoading } = HeroStore.useStoreState<HeroStateType>(
     state => state
   );
+
   const {
     getHeroes,
     postHero,
     deleteHero,
     setHero
-  } = HeroStore.useStoreActions(actions => actions);
+  } = HeroStore.useStoreActions<HeroActionType | any>(actions => actions);
 
   /*plain React.js*/
   const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
