@@ -1,8 +1,18 @@
-import { action, computed, createContextStore, thunk, ThunkCreator } from 'easy-peasy'
-import { deleteHero, getHeroById, getHeroes, postHero, putHero } from './hero-service'
-import { HeroActionType, HeroStateType } from './hero-types';
-
-
+import {
+  action,
+  computed,
+  createContextStore,
+  thunk,
+  ThunkCreator,
+} from "easy-peasy";
+import {
+  deleteHero,
+  getHeroById,
+  getHeroes,
+  postHero,
+  putHero,
+} from "./hero-service";
+import { Hero, HeroActionType, HeroStateType } from "./hero-types";
 
 const initialValues: HeroStateType = {
   heroes: [],
@@ -11,15 +21,15 @@ const initialValues: HeroStateType = {
     firstName: "",
     lastName: "",
     house: "",
-    knownAs: ""
+    knownAs: "",
   },
   error: "",
-  isLoading: false,
-}
+  loading: false,
+};
 
 const HeroStore = createContextStore({
   /*states*/
- ...initialValues,
+  ...initialValues,
   /*actions thunk side effects*/
   getHeroes: thunk(async (actions: HeroActionType) => {
     actions.setIsLoading();
@@ -31,7 +41,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  getHeroById: thunk(async (actions: HeroActionType, id) => {
+  getHeroById: thunk(async (actions: HeroActionType, id: string) => {
     actions.setIsLoading();
     try {
       const { data } = await getHeroById(id);
@@ -41,7 +51,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  postHero: thunk(async (actions: HeroActionType, newHero) => {
+  postHero: thunk(async (actions: HeroActionType, newHero: Hero) => {
     actions.setIsLoading();
     try {
       const { data } = await postHero(newHero);
@@ -52,7 +62,7 @@ const HeroStore = createContextStore({
     actions.setIsLoading();
   }),
   // Pessimistic UI update
-  deleteHero: thunk(async (actions: HeroActionType, id) => {
+  deleteHero: thunk(async (actions: HeroActionType, id: string) => {
     actions.setIsLoading();
     try {
       await deleteHero(id);
@@ -62,7 +72,7 @@ const HeroStore = createContextStore({
     }
     actions.setIsLoading();
   }),
-  putHero: thunk(async (actions: HeroActionType, updatedHero) => {
+  putHero: thunk(async (actions: HeroActionType, updatedHero: Hero) => {
     actions.setIsLoading();
 
     try {
@@ -74,31 +84,33 @@ const HeroStore = createContextStore({
     actions.setIsLoading();
   }),
   /*actions*/
-  setHeroes: action((state:HeroStateType, heroes) => {
+  setHeroes: action((state: HeroStateType, heroes: Hero[]) => {
     state.heroes = heroes;
   }),
-  setHero: action((state:HeroStateType, hero) => {
+  setHero: action((state: HeroStateType, hero: Hero) => {
     state.hero = hero;
   }),
-  setError: action((state:HeroStateType, error) => {
+  setError: action((state: HeroStateType, error: any) => {
     state.error = error.message;
     alert(error.message);
   }),
-  setIsLoading: action((state:HeroStateType) => {
-    state.isLoading = !state.isLoading;
+  setIsLoading: action((state: HeroStateType) => {
+    state.loading = !state.loading;
   }),
-  addHero: action((state:HeroStateType, newHero) => {
+  addHero: action((state: HeroStateType, newHero: Hero) => {
     state.heroes.push(newHero);
   }),
-  removeHero: action((state:HeroStateType, id) => {
-    state.heroes = state.heroes.filter(h => h.id !== id);
+  removeHero: action((state: HeroStateType, id: string) => {
+    state.heroes = state.heroes.filter((h) => h.id !== id);
   }),
-  updateHeroes: action((state:HeroStateType, updatedHero) => {
-    const index = state.heroes.findIndex(h => h.id === updatedHero.id);
+  updateHeroes: action((state: HeroStateType, updatedHero: Hero) => {
+    const index = state.heroes.findIndex((h) => h.id === updatedHero.id);
     state.heroes[index] = updatedHero;
   }),
   /*computed values i.e. derived state*/
-  totalHeroes: computed((state:HeroStateType) => Object.values(state.heroes).length)
+  totalHeroes: computed(
+    (state: HeroStateType) => Object.values(state.heroes).length
+  ),
 });
 
 export default HeroStore;

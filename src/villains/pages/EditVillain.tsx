@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import VillainStore from "../villain-store";
+import { VillainStateType } from "../villain-types";
 
 export default function EditVillain(params) {
   /*part of the Easy-Peasy pattern*/
-  const { villain, isLoading } = VillainStore.useStoreState(
-    state => state
-  );
+  const { villain, loading } = VillainStore.useStoreState((state) => state);
   const {
     getVillainById,
     setVillain,
-    putVillain
-  } = VillainStore.useStoreActions(actions => actions);
+    putVillain,
+  } = VillainStore.useStoreActions((actions) => actions);
 
   /*plain React.js*/
   useEffect(() => {
@@ -24,7 +23,7 @@ export default function EditVillain(params) {
     setVillain(updatedVillain);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     await putVillain(villain);
   };
@@ -36,12 +35,12 @@ export default function EditVillain(params) {
   return (
     <>
       <h2>Edit Villain</h2>
-      {isLoading ? (
+      {loading ? (
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <div
@@ -49,7 +48,7 @@ export default function EditVillain(params) {
             style={{
               width: "9rem",
               height: "9rem",
-              color: "purple"
+              color: "purple",
             }}
             role="status"
           >

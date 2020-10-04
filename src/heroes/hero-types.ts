@@ -1,26 +1,30 @@
 export type HeroStateType = {
-  heroes: Hero[],
-  hero: Hero,
-  error: string,
-  isLoading: boolean,
-}
+  heroes: Hero[];
+  hero: Hero;
+  error: string;
+  loading: boolean;
+};
 
 export type Hero = {
-  id: string,
-  firstName: string,
-  lastName: string,
-  house: string,
-  knownAs: string
-}
+  id: string;
+  firstName: string;
+  lastName: string;
+  house: string;
+  knownAs: string;
+};
 
-// FIX: all any
 export type HeroActionType = {
-  setHeroes: any;
-  setHero: any;
-  setError: any;
-  setIsLoading: any;
-  addHero: any;
-  removeHero: any;
-  updateHeroes: any;
-  totalHeroes: any;
-}
+  getHeroes: () => Promise<void>;
+  getHeroById: () => Promise<void>;
+  postHero: () => Promise<void>;
+  deleteHero: () => Promise<void>;
+  putHero: () => Promise<void>;
+  setHeroes: (heroes: Hero[]) => void;
+  setHero: (hero: Hero) => void;
+  setError: (message: string) => void;
+  setIsLoading: () => void;
+  addHero: (hero: Hero) => void;
+  removeHero: (id: string) => void;
+  updateHeroes: (hero: Hero) => void;
+  totalHeroes: () => void;
+};

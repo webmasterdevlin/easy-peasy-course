@@ -5,15 +5,15 @@ import VillainStore from "../villain-store";
 
 export default function Villains() {
   /*part of the Easy-Peasy pattern*/
-  const { villains, villain, isLoading } = VillainStore.useStoreState(
-    state => state
+  const { villains, villain, loading } = VillainStore.useStoreState(
+    (state) => state
   );
   const {
     getVillains,
     postVillain,
     deleteVillain,
-    setVillain
-  } = VillainStore.useStoreActions(actions => actions);
+    setVillain,
+  } = VillainStore.useStoreActions((actions) => actions);
 
   /*plain React.js*/
   const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
@@ -32,12 +32,12 @@ export default function Villains() {
     setVillain(newVillain);
   };
 
-  const onSubmit = async event => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     try {
-     await postVillain(villain);
+      await postVillain(villain);
       setIsShowNewItemForm(!isShowNewItemForm);
-    } catch  {}
+    } catch {}
   };
 
   const removeItem = async (id, name) => {
@@ -54,12 +54,12 @@ export default function Villains() {
         handleOnSubmit={onSubmit}
         handleShowNewItemForm={showNewItemForm}
       />
-      {isLoading ? (
+      {loading ? (
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <div
@@ -67,7 +67,7 @@ export default function Villains() {
             style={{
               width: "9rem",
               height: "9rem",
-              color: "purple"
+              color: "purple",
             }}
             role="status"
           >
@@ -75,7 +75,7 @@ export default function Villains() {
           </div>
         </div>
       ) : (
-        villains.map(item => (
+        villains.map((item) => (
           <div key={item.id} className="card mt-3" style={{ width: "auto" }}>
             <div className="card-header">
               <h3 className="card-title">

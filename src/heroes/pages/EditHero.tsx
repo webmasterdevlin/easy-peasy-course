@@ -3,9 +3,9 @@ import HeroStore from "../hero-store";
 
 export default function EditHero(params) {
   /*part of the Easy-Peasy pattern*/
-  const { hero, isLoading } = HeroStore.useStoreState(state => state);
+  const { hero, loading } = HeroStore.useStoreState((state) => state);
   const { getHeroById, setHero, putHero } = HeroStore.useStoreActions(
-    actions => actions
+    (actions) => actions
   );
 
   /*plain React.js*/
@@ -20,7 +20,7 @@ export default function EditHero(params) {
     setHero(updatedHero);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     await putHero(hero);
   };
@@ -32,12 +32,12 @@ export default function EditHero(params) {
   return (
     <>
       <h2>Edit Hero</h2>
-      {isLoading ? (
+      {loading ? (
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <div
@@ -45,7 +45,7 @@ export default function EditHero(params) {
             style={{
               width: "9rem",
               height: "9rem",
-              color: "purple"
+              color: "purple",
             }}
             role="status"
           >
