@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import VillainStore from "../villain-store";
-import { VillainStateType } from "../villain-types";
+import { useStoreActions, useStoreState } from "easy-peasy";
+import { VillainActionType, VillainStateType } from "../villain-types";
 
 export default function EditVillain(params) {
   /*part of the Easy-Peasy pattern*/
-  const { villain, loading } = VillainStore.useStoreState((state) => state);
-  const {
-    getVillainById,
-    setVillain,
-    putVillain,
-  } = VillainStore.useStoreActions((actions) => actions);
+  const { villain, loading } = useStoreState<VillainStateType>(
+    (state) => state
+  );
+  const { getVillainById, setVillain, putVillain } = useStoreActions<
+    VillainActionType
+  >((actions) => actions);
 
   /*plain React.js*/
   useEffect(() => {

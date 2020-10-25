@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
 import { Link } from "@reach/router";
-import VillainStore from "../villain-store";
+
+import { useStoreActions, useStoreState } from "easy-peasy";
+import { VillainActionType, VillainStateType } from "../villain-types";
 
 export default function Villains() {
   /*part of the Easy-Peasy pattern*/
-  const { villains, villain, loading } = VillainStore.useStoreState(
+  const { villains, villain, loading } = useStoreState<VillainStateType>(
     (state) => state
   );
   const {
@@ -13,7 +15,7 @@ export default function Villains() {
     postVillain,
     deleteVillain,
     setVillain,
-  } = VillainStore.useStoreActions((actions) => actions);
+  } = useStoreActions<VillainActionType>((actions) => actions);
 
   /*plain React.js*/
   const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);

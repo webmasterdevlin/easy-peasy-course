@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import HeroStore from "../hero-store";
+import { useStoreActions, useStoreState } from "easy-peasy";
+import { HeroActionType, HeroStateType } from "../hero-types";
 
 export default function EditHero(params) {
   /*part of the Easy-Peasy pattern*/
-  const { hero, loading } = HeroStore.useStoreState((state) => state);
-  const { getHeroById, setHero, putHero } = HeroStore.useStoreActions(
+  const { hero, loading } = useStoreState<HeroStateType>((state) => state);
+  const { getHeroById, setHero, putHero } = useStoreActions<HeroActionType>(
     (actions) => actions
   );
 

@@ -1,4 +1,4 @@
-import { action, computed, createContextStore, thunk } from "easy-peasy";
+import { action, computed, createStore, thunk } from "easy-peasy";
 import {
   deleteVillain,
   getVillainById,
@@ -8,7 +8,7 @@ import {
 } from "./villain-service";
 import { Villain, VillainActionType, VillainStateType } from "./villain-types";
 
-const VillainStore = createContextStore({
+const VillainStore = createStore({
   /*states*/
   villains: [],
   villain: {

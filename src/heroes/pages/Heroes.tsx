@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
 import { Link } from "@reach/router";
-import HeroStore from "../hero-store";
 import { HeroActionType, HeroStateType } from "heroes/hero-types";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function Heroes() {
   /*part of the Easy-Peasy pattern*/
-  const { heroes, hero, loading } = HeroStore.useStoreState<HeroStateType>(
+  const { heroes, hero, loading } = useStoreState<HeroStateType>(
     (state) => state
   );
 
-  const {
-    getHeroes,
-    postHero,
-    deleteHero,
-    setHero,
-  } = HeroStore.useStoreActions<HeroActionType | any>((actions) => actions);
+  const { getHeroes, postHero, deleteHero, setHero } = useStoreActions<
+    HeroActionType
+  >((actions) => actions);
 
   /*plain React.js*/
   const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
@@ -77,7 +74,7 @@ export default function Heroes() {
           </div>
         </div>
       ) : (
-        heroes.map((item) => (
+        heroes?.map((item) => (
           <div key={item.id} className="card mt-3" style={{ width: "auto" }}>
             <div className="card-header">
               <h3 className="card-title">

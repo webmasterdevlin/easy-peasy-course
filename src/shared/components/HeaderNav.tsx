@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import HeroStore from '../../heroes/hero-store';
-import VillainStore from '../../villains/villain-store';
-import {Link,} from "@reach/router";
-
+import React, { useState } from "react";
+import { Link } from "@reach/router";
+import { useStoreState } from "easy-peasy";
+import { HeroStateType } from "../../heroes/hero-types";
+import { VillainStateType } from "../../villains/villain-types";
 
 export default function HeaderNav() {
-  const {totalHeroes} = HeroStore.useStoreState(
-    state => state
-  );
-  const {totalVillains} = VillainStore.useStoreState(state => state);
+  const { totalHeroes } = useStoreState<HeroStateType>((state) => state);
+  const { totalVillains } = useStoreState<VillainStateType>((state) => state);
 
   const [navIsCollapse, setNavIsCollapse] = useState(true);
 
