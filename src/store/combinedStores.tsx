@@ -3,7 +3,7 @@ import { StoreProvider } from "easy-peasy";
 import HeroStore from "../features/heroes/heroStore";
 
 const CombinedStores = ({ children }: any) => {
-  return <StoreProvider store={HeroStore}>s{children}</StoreProvider>;
+  return <StoreProvider store={HeroStore}>{children}</StoreProvider>;
 };
 
 export default CombinedStores;
