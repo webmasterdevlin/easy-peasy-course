@@ -1,24 +1,22 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import RootRouter from "./root-router";
-import HeaderNav from "./shared/components/HeaderNav";
-import { StoreProvider } from "easy-peasy";
-import HeroStore from "./heroes/hero-store";
-import VillainStore from "./villains/villain-store";
+import Routes from "./routes";
+import HeaderNav from "./components/HeaderNav";
+import CombinedStores from "./store/combinedStores";
 
 function App() {
   return (
-    <StoreProvider store={HeroStore}>
+    <CombinedStores>
       <BrowserRouter>
         <>
           <HeaderNav />
           <div className="container">
-            <RootRouter />
+            <Routes />
           </div>
         </>
       </BrowserRouter>
-    </StoreProvider>
+    </CombinedStores>
   );
 }
 
