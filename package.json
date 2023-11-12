@@ -10,7 +10,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router": "^5.1.9",
     "@types/yup": "^0.29.11",
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "bootstrap": "^5.0.0-beta1",
     "easy-peasy": "^4.0.1",
     "formik": "^2.2.6",
